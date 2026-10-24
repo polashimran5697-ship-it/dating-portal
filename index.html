@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet Local Singles Nearby</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #1f2937, #111827);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 16px;
+    }
+    .container {
+      width: 100%;
+      max-width: 440px;
+      margin: auto 0;
+      background: rgba(31, 41, 55, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      color: #9ca3af;
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+    .step {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .step.active {
+      display: block;
+    }
+    .step-counter {
+      color: #6b7280;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .question {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: #374151;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #4b5563;
+      transform: translateY(-1px);
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      border: none;
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+    }
+    .btn.primary:hover {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+    }
+    footer {
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 32px;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+    footer a {
+      color: #9ca3af;
+      text-decoration: underline;
+      margin: 0 4px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="badge">Verified Members Only</div>
+
+    <!-- Step 1 -->
+    <div class="step active" id="step1">
+      <div class="step-counter">Step 1 of 3</div>
+      <div class="question">Are you at least 18 years old?</div>
+      <div class="options">
+        <button class="btn" onclick="nextStep(2)">Yes, I am 18 or older</button>
+        <button class="btn" onclick="alert('You must be 18+ to enter.')">No</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step" id="step2">
+      <div class="step-counter">Step 2 of 3</div>
+      <div class="question">What type of connection are you looking for?</div>
+      <div class="options">
+        <button class="btn" onclick="nextStep(3)">Casual Dating</button>
+        <button class="btn" onclick="nextStep(3)">Serious Relationship</button>
+        <button class="btn" onclick="nextStep(3)">New Friends Nearby</button>
+      </div>
+    </div>
+
+    <!-- Step 3 (Final CTA) -->
+    <div class="step" id="step3">
+      <div class="step-counter">Final Step</div>
+      <h1>Matches Found!</h1>
+      <p class="subtitle">Based on your responses, 14 verified singles are active near your location.</p>
+      
+      <!-- আপনার অ্যাফিলিয়েট অফার লিংক নিচে href-এ বসাবেন -->
+      <a href="https://your-network-offer-link.com" class="btn primary" id="ctaBtn">
+        View My Matches &rarr;
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>18+ Only. Discretion & Privacy Guaranteed.</p>
+    <p>This is an independent matchmaking portal. By continuing, you agree to our 
+      <a href="#">Terms of Service</a> & <a href="#">Privacy Policy</a>.
+    </p>
+  </footer>
+
+  <script>
+    function nextStep(stepNumber) {
+      document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.getElementById('step' + stepNumber).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
